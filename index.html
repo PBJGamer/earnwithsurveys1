@@ -8,9 +8,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
@@ -22,53 +20,43 @@ body {
 /* HERO */
 .hero {
   text-align: center;
-  padding: 80px 20px 60px;
+  padding: 80px 20px 40px;
 }
 
 .badge {
-  display: inline-block;
   background: rgba(34,197,94,0.1);
   color: #22c55e;
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 13px;
   margin-bottom: 20px;
+  display: inline-block;
 }
 
 h1 {
   font-size: 52px;
   margin: 0;
-  line-height: 1.1;
 }
 
-.highlight {
-  color: #34d399;
-}
+.highlight { color: #34d399; }
 
 .subtext {
   color: #94a3b8;
   font-size: 18px;
-  margin: 20px auto 30px;
+  margin: 15px auto 25px;
   max-width: 520px;
 }
 
 /* CTA */
 .cta-button {
-  display: inline-block;
   background: linear-gradient(135deg, #34d399, #10b981);
   color: black;
-  padding: 16px 34px;
+  padding: 16px 32px;
   border-radius: 12px;
   font-weight: 700;
   text-decoration: none;
-  font-size: 18px;
-  box-shadow: 0 10px 30px rgba(16,185,129,0.3);
-  transition: all 0.25s ease;
+  display: inline-block;
   animation: pulse 2.5s infinite;
-}
-
-.cta-button:hover {
-  transform: translateY(-2px);
 }
 
 @keyframes pulse {
@@ -83,14 +71,12 @@ h1 {
   margin-top: 10px;
 }
 
-/* STORY */
+/* STORY (FIXED SPACING) */
 .story {
   max-width: 600px;
-  margin: 40px auto;
+  margin: 20px auto 30px;
   text-align: center;
   color: #cbd5f5;
-  line-height: 1.6;
-  font-size: 16px;
 }
 
 /* MAIN */
@@ -102,36 +88,23 @@ h1 {
   flex-wrap: wrap;
 }
 
-/* INFO */
-.info {
-  max-width: 420px;
-  width: 100%;
-}
+.info { max-width: 420px; }
 
-.info h2 {
-  margin-bottom: 8px;
-}
+.info p { color: #94a3b8; }
 
-.info p {
-  color: #94a3b8;
-  margin-bottom: 20px;
-}
-
-/* MOCKUP (MATCHED TO SITE 1) */
+/* MATCHED MOCKUP */
 .mockup {
+  max-width: 380px;
   width: 100%;
-  max-width: 420px;
   background: #0f172a;
-  border-radius: 18px;
-  padding: 20px;
-  border: 1px solid rgba(255,255,255,0.06);
-  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+  border-radius: 16px;
+  padding: 16px;
 }
 
 .mock-top {
   display: flex;
   gap: 10px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .stat {
@@ -139,16 +112,7 @@ h1 {
   background: #020617;
   padding: 10px;
   border-radius: 8px;
-}
-
-.stat-title {
-  font-size: 12px;
-  color: #64748b;
-}
-
-.stat-value {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 13px;
 }
 
 .survey {
@@ -158,60 +122,33 @@ h1 {
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
+  font-size: 13px;
 }
 
-/* SECOND CTA */
-.final-cta {
-  margin-top: 30px;
-}
-
+/* CTA 2 */
 .cta-secondary {
-  display: inline-block;
   border: 2px solid #34d399;
   color: #34d399;
-  padding: 14px 28px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 8px;
   text-decoration: none;
-  font-weight: 600;
-}
-
-.cta-secondary:hover {
-  background: #34d399;
-  color: black;
 }
 
 /* TRUST */
 .trust {
   text-align: center;
-  font-size: 13px;
   color: #64748b;
   padding: 50px 20px 70px;
-}
-
-/* DESKTOP FIX FOR SECOND CTA */
-@media (min-width: 769px) {
-  .final-cta {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-  }
+  font-size: 13px;
 }
 
 /* MOBILE */
-@media (max-width: 768px) {
-
-  h1 {
-    font-size: 34px;
-  }
-
-  .subtext {
-    font-size: 16px;
-  }
+@media (max-width:768px){
+  h1 { font-size:34px; }
 
   .main {
     flex-direction: column;
     gap: 30px;
-    padding: 30px 16px 80px;
   }
 
   .cta-button,
@@ -219,14 +156,12 @@ h1 {
     width: 100%;
     text-align: center;
   }
-
 }
 </style>
 </head>
 
 <body>
 
-<!-- HERO -->
 <div class="hero">
 
   <div class="badge">Free • No experience needed</div>
@@ -237,65 +172,51 @@ h1 {
   </h1>
 
   <div class="subtext">
-    I didn’t expect it to work, but after trying it, I actually got paid.
+    I didn’t expect it to work, but it actually paid me.
   </div>
 
-  <a class="cta-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
+  <a class="cta-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d">
     👉 Try It Free
   </a>
 
-  <div class="cta-note">
-    Takes less than 1 minute to get started
-  </div>
+  <div class="cta-note">Takes less than 1 minute to get started</div>
 
 </div>
 
-<!-- STORY -->
 <div class="story">
-  I was just scrolling and saw someone mention this, so I gave it a try.  
-  Answered a few questions and ended up earning a few dollars.  
-  It’s not crazy money, but it actually works.
+  I saw someone mention this and tried it.  
+  Answered a few questions and actually got paid.  
+  Not crazy money — but it works.
 </div>
 
-<!-- MAIN -->
 <div class="main">
 
   <div class="info">
     <h2>What you do</h2>
-    <p>Answer simple questions and surveys.</p>
+    <p>Answer simple questions.</p>
 
     <h2>What you get</h2>
-    <p>Small payments, gift cards, or cash.</p>
+    <p>Cash, gift cards, and rewards.</p>
 
-    <h2>Worth trying?</h2>
-    <p>If you’ve got spare time, it’s an easy way to earn a bit extra.</p>
+    <h2>Worth it?</h2>
+    <p>If you’ve got spare time — yes.</p>
 
-    <div class="final-cta">
-      <a class="cta-secondary" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
+    <div style="margin-top:30px;">
+      <a class="cta-secondary" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d">
         See How It Works
       </a>
     </div>
-
   </div>
 
   <div class="mockup">
-
     <div class="mock-top">
-      <div class="stat">
-        <div class="stat-title">Available</div>
-        <div class="stat-value">12 Surveys</div>
-      </div>
-
-      <div class="stat">
-        <div class="stat-title">Today</div>
-        <div class="stat-value">$4.80</div>
-      </div>
+      <div class="stat">12 Surveys</div>
+      <div class="stat">$4.80 Today</div>
     </div>
 
-    <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
-    <div class="survey"><span>App feedback</span><span>3 min</span></div>
-    <div class="survey"><span>Daily routine</span><span>4 min</span></div>
-
+    <div class="survey"><span>Quick survey</span><span>3 min</span></div>
+    <div class="survey"><span>App feedback</span><span>4 min</span></div>
+    <div class="survey"><span>Daily habits</span><span>5 min</span></div>
   </div>
 
 </div>
