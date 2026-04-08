@@ -25,6 +25,16 @@ body {
   padding: 80px 20px 60px;
 }
 
+.badge {
+  display: inline-block;
+  background: rgba(34,197,94,0.1);
+  color: #22c55e;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
 h1 {
   font-size: 52px;
   margin: 0;
@@ -32,7 +42,7 @@ h1 {
 }
 
 .highlight {
-  color: #34d399; /* green tone to match banner */
+  color: #34d399;
 }
 
 .subtext {
@@ -67,7 +77,13 @@ h1 {
   100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
 }
 
-/* STORY SECTION */
+.cta-note {
+  font-size: 13px;
+  color: #64748b;
+  margin-top: 10px;
+}
+
+/* STORY */
 .story {
   max-width: 600px;
   margin: 40px auto;
@@ -81,7 +97,7 @@ h1 {
 .main {
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 60px;
   padding: 40px 20px 100px;
   flex-wrap: wrap;
 }
@@ -89,6 +105,7 @@ h1 {
 /* INFO */
 .info {
   max-width: 420px;
+  width: 100%;
 }
 
 .info h2 {
@@ -100,13 +117,38 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* MOCKUP */
+/* MOCKUP (MATCHED TO SITE 1) */
 .mockup {
   width: 100%;
   max-width: 420px;
   background: #0f172a;
   border-radius: 18px;
   padding: 20px;
+  border: 1px solid rgba(255,255,255,0.06);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.7);
+}
+
+.mock-top {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.stat {
+  flex: 1;
+  background: #020617;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.stat-title {
+  font-size: 12px;
+  color: #64748b;
+}
+
+.stat-value {
+  font-size: 18px;
+  font-weight: 600;
 }
 
 .survey {
@@ -146,11 +188,24 @@ h1 {
   padding: 50px 20px 70px;
 }
 
+/* DESKTOP FIX FOR SECOND CTA */
+@media (min-width: 769px) {
+  .final-cta {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+}
+
 /* MOBILE */
 @media (max-width: 768px) {
 
   h1 {
     font-size: 34px;
+  }
+
+  .subtext {
+    font-size: 16px;
   }
 
   .main {
@@ -174,6 +229,8 @@ h1 {
 <!-- HERO -->
 <div class="hero">
 
+  <div class="badge">Free • No experience needed</div>
+
   <h1>
     I Got Paid For <span class="highlight">This…</span><br>
     Just Answering Questions
@@ -186,6 +243,10 @@ h1 {
   <a class="cta-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
     👉 Try It Free
   </a>
+
+  <div class="cta-note">
+    Takes less than 1 minute to get started
+  </div>
 
 </div>
 
@@ -218,9 +279,23 @@ h1 {
   </div>
 
   <div class="mockup">
-    <div class="survey"><span>Quick survey</span><span>3 min</span></div>
-    <div class="survey"><span>App feedback</span><span>4 min</span></div>
-    <div class="survey"><span>Daily habits</span><span>5 min</span></div>
+
+    <div class="mock-top">
+      <div class="stat">
+        <div class="stat-title">Available</div>
+        <div class="stat-value">12 Surveys</div>
+      </div>
+
+      <div class="stat">
+        <div class="stat-title">Today</div>
+        <div class="stat-value">$4.80</div>
+      </div>
+    </div>
+
+    <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
+    <div class="survey"><span>App feedback</span><span>3 min</span></div>
+    <div class="survey"><span>Daily routine</span><span>4 min</span></div>
+
   </div>
 
 </div>
