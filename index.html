@@ -25,6 +25,7 @@ body {
   padding: 80px 20px 60px;
 }
 
+/* BADGE */
 .badge {
   display: inline-block;
   background: rgba(34,197,94,0.1);
@@ -33,23 +34,43 @@ body {
   border-radius: 999px;
   font-size: 13px;
   margin-bottom: 20px;
+
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
 }
 
+/* HEADLINE */
 h1 {
   font-size: 52px;
   margin: 0;
   line-height: 1.1;
 }
 
+/* TEXT REVEAL */
+.reveal {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(10px);
+  animation: fadeUp 0.6s ease forwards;
+}
+
+.reveal.delay1 { animation-delay: 0.2s; }
+.reveal.delay2 { animation-delay: 0.5s; }
+
 .highlight {
   color: #34d399;
 }
 
+/* SUBTEXT */
 .subtext {
   color: #94a3b8;
   font-size: 18px;
   margin: 20px auto 30px;
   max-width: 520px;
+
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 0.8s;
 }
 
 /* CTA */
@@ -64,33 +85,53 @@ h1 {
   font-size: 18px;
   box-shadow: 0 10px 30px rgba(16,185,129,0.3);
   transition: all 0.25s ease;
-  animation: pulse 2.5s infinite;
+
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards, pulse 2.5s infinite;
+  animation-delay: 1.2s;
 }
 
 .cta-button:hover {
   transform: translateY(-2px);
 }
 
+/* Pulse */
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
   70% { box-shadow: 0 0 0 12px rgba(16,185,129,0); }
   100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
 }
 
+/* Fade */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .cta-note {
   font-size: 13px;
   color: #64748b;
   margin-top: 10px;
+
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 1.4s;
 }
 
-/* STORY (FIXED SPACING ONLY) */
+/* STORY */
 .story {
   max-width: 600px;
-  margin: 25px auto 40px; /* tightened */
+  margin: 25px auto 40px;
   text-align: center;
   color: #cbd5f5;
   line-height: 1.6;
   font-size: 16px;
+
+  opacity: 0;
+  animation: fadeUp 0.6s ease forwards;
+  animation-delay: 1.6s;
 }
 
 /* MAIN */
@@ -116,7 +157,7 @@ h1 {
   margin-bottom: 20px;
 }
 
-/* MOCKUP (FIXED — FILLS NICELY) */
+/* MOCKUP */
 .mockup {
   width: 100%;
   max-width: 420px;
@@ -203,7 +244,6 @@ h1 {
     width: 100%;
     text-align: center;
   }
-
 }
 </style>
 </head>
@@ -215,8 +255,9 @@ h1 {
   <div class="badge">Free • No experience needed</div>
 
   <h1>
-    I Got Paid For <span class="highlight">This…</span><br>
-    Just Answering Questions
+    <span class="reveal delay1">I Got Paid For</span>
+    <span class="reveal delay2 highlight">This…</span><br>
+    <span class="reveal delay2">Just Answering Questions</span>
   </h1>
 
   <div class="subtext">
