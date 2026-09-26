@@ -3,13 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Got Paid For This</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link
+  href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+  rel="stylesheet"
+>
 
 <style>
+/* =========================================================
+   GLOBAL
+========================================================= */
+
 * {
   box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -17,65 +29,128 @@ body {
   font-family: 'Inter', sans-serif;
   background: #020617;
   color: white;
+  overflow-x: hidden;
 }
 
-/* HERO */
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+.container {
+  width: min(1100px, calc(100% - 40px));
+  margin-inline: auto;
+}
+
+/* =========================================================
+   FADE ANIMATION
+========================================================= */
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.8s ease,
+    transform 0.8s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* HERO STAGGER */
+
+.hero .fade-item {
+  opacity: 0;
+  transform: translateY(12px);
+  animation: heroFade 0.65s ease forwards;
+}
+
+.hero .delay-1 {
+  animation-delay: 0.15s;
+}
+
+.hero .delay-2 {
+  animation-delay: 0.35s;
+}
+
+.hero .delay-3 {
+  animation-delay: 0.55s;
+}
+
+.hero .delay-4 {
+  animation-delay: 0.75s;
+}
+
+.hero .delay-5 {
+  animation-delay: 0.95s;
+}
+
+@keyframes heroFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
 .hero {
   text-align: center;
-  padding: 80px 20px 60px;
+  padding: clamp(55px, 8vw, 90px) 0 clamp(45px, 6vw, 70px);
 }
 
-/* BADGE */
 .badge {
   display: inline-block;
-  background: rgba(34,197,94,0.1);
+  background: rgba(34, 197, 94, 0.1);
   color: #22c55e;
   padding: 6px 14px;
   border-radius: 999px;
   font-size: 13px;
   margin-bottom: 20px;
-
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
 }
 
-/* HEADLINE */
 h1 {
-  font-size: 52px;
-  margin: 0;
-  line-height: 1.1;
+  font-size: clamp(34px, 5.5vw, 52px);
+  line-height: 1.08;
+  margin: 0 auto;
+  max-width: 850px;
+  letter-spacing: -1.3px;
 }
-
-/* TEXT REVEAL */
-.reveal {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(10px);
-  animation: fadeUp 0.6s ease forwards;
-}
-
-.reveal.delay1 { animation-delay: 0.2s; }
-.reveal.delay2 { animation-delay: 0.5s; }
 
 .highlight {
   color: #34d399;
 }
 
-/* SUBTEXT */
 .subtext {
   color: #94a3b8;
-  font-size: 18px;
+  font-size: clamp(16px, 2vw, 18px);
+  line-height: 1.6;
   margin: 20px auto 30px;
   max-width: 520px;
-
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
-  animation-delay: 0.8s;
 }
 
-/* CTA */
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+.cta-button,
+.cta-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background 0.25s ease,
+    box-shadow 0.25s ease,
+    color 0.25s ease;
+}
+
 .cta-button {
-  display: inline-block;
   background: linear-gradient(135deg, #34d399, #10b981);
   color: black;
   padding: 16px 34px;
@@ -83,97 +158,87 @@ h1 {
   font-weight: 700;
   text-decoration: none;
   font-size: 18px;
-  box-shadow: 0 10px 30px rgba(16,185,129,0.3);
-  transition: all 0.25s ease;
-
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards, pulse 2.5s infinite;
-  animation-delay: 1.2s;
+  box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
 }
 
 .cta-button:hover {
-  transform: translateY(-2px);
+  transform: translateY(-3px);
+  box-shadow: 0 14px 35px rgba(16, 185, 129, 0.4);
 }
 
-/* Pulse */
-@keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(16,185,129,0.4); }
-  70% { box-shadow: 0 0 0 12px rgba(16,185,129,0); }
-  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0); }
-}
-
-/* Fade */
-@keyframes fadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.cta-button:active {
+  transform: translateY(0);
 }
 
 .cta-note {
   font-size: 13px;
   color: #64748b;
   margin-top: 10px;
-
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
-  animation-delay: 1.4s;
 }
 
-/* STORY */
+/* =========================================================
+   STORY
+========================================================= */
+
 .story {
   max-width: 600px;
-  margin: 25px auto 40px;
+  margin: 10px auto 45px;
+  padding: 0 20px;
   text-align: center;
   color: #cbd5f5;
-  line-height: 1.6;
+  line-height: 1.7;
   font-size: 16px;
-
-  opacity: 0;
-  animation: fadeUp 0.6s ease forwards;
-  animation-delay: 1.6s;
 }
 
-/* MAIN */
+/* =========================================================
+   MAIN
+========================================================= */
+
 .main {
-  display: flex;
-  justify-content: center;
-  gap: 50px;
-  padding: 40px 20px 100px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 420px);
+  align-items: start;
+  gap: clamp(35px, 7vw, 70px);
+  padding: 30px 0 100px;
 }
 
-/* INFO */
 .info {
-  max-width: 420px;
+  min-width: 0;
 }
 
 .info h2 {
-  margin-bottom: 8px;
+  margin: 0 0 8px;
+  font-size: clamp(20px, 2.5vw, 24px);
 }
 
 .info p {
   color: #94a3b8;
-  margin-bottom: 20px;
+  line-height: 1.65;
+  margin: 0 0 24px;
+  font-size: 15px;
 }
 
-/* MOCKUP */
+/* =========================================================
+   MOCKUP
+========================================================= */
+
 .mockup {
   width: 100%;
-  max-width: 420px;
   background: #0f172a;
   border-radius: 18px;
-  padding: 18px;
+  padding: clamp(15px, 3vw, 20px);
+  border: 1px solid rgba(255, 255, 255, 0.04);
 }
 
 .mock-top {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
   margin-bottom: 10px;
 }
 
 .stat {
-  flex: 1;
+  min-width: 0;
   background: #020617;
   padding: 10px;
   border-radius: 8px;
@@ -187,27 +252,39 @@ h1 {
 .stat-value {
   font-size: 18px;
   font-weight: 600;
+  margin-top: 2px;
 }
 
 .survey {
   background: #020617;
-  padding: 10px;
+  padding: 11px 12px;
   border-radius: 6px;
   margin-top: 8px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 14px;
 }
 
-/* SECOND CTA */
+.survey span:last-child {
+  color: #94a3b8;
+  white-space: nowrap;
+}
+
+/* =========================================================
+   SECOND CTA
+========================================================= */
+
 .final-cta {
   margin-top: 30px;
 }
 
 .cta-secondary {
-  display: inline-block;
   border: 2px solid #34d399;
   color: #34d399;
-  padding: 14px 28px;
+  background: transparent;
+  padding: 13px 28px;
   border-radius: 10px;
   text-decoration: none;
   font-weight: 600;
@@ -216,33 +293,120 @@ h1 {
 .cta-secondary:hover {
   background: #34d399;
   color: black;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(52, 211, 153, 0.18);
 }
 
-/* TRUST */
+.cta-secondary:active {
+  transform: translateY(0);
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
 .trust {
   text-align: center;
   font-size: 13px;
   color: #64748b;
-  padding: 50px 20px 70px;
+  padding: 45px 20px 70px;
 }
 
-/* MOBILE */
-@media (max-width: 768px) {
+/* =========================================================
+   TABLET / SMALL LAPTOP
+========================================================= */
 
-  h1 {
-    font-size: 34px;
-  }
+@media (max-width: 850px) {
 
   .main {
-    flex-direction: column;
-    gap: 30px;
-    padding: 30px 16px 80px;
+    grid-template-columns: 1fr;
+    max-width: 650px;
+    margin-inline: auto;
+  }
+
+  .mockup {
+    max-width: 520px;
+    margin-inline: auto;
+  }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 600px) {
+
+  .container {
+    width: min(100% - 28px, 1100px);
+  }
+
+  .hero {
+    padding-top: 50px;
+  }
+
+  h1 {
+    letter-spacing: -0.8px;
   }
 
   .cta-button,
   .cta-secondary {
     width: 100%;
-    text-align: center;
+  }
+
+  .story {
+    padding: 0 14px;
+  }
+
+  .main {
+    padding-bottom: 70px;
+  }
+
+  .mock-top {
+    grid-template-columns: 1fr;
+  }
+
+  .survey {
+    font-size: 13px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL
+========================================================= */
+
+@media (max-width: 360px) {
+
+  .container {
+    width: calc(100% - 22px);
+  }
+
+  .hero {
+    padding-top: 40px;
+  }
+}
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .fade,
+  .hero .fade-item {
+    opacity: 1;
+    transform: none;
   }
 }
 </style>
@@ -250,52 +414,87 @@ h1 {
 
 <body>
 
-<div class="hero">
+<!-- =======================================================
+     HERO
+======================================================= -->
 
-  <div class="badge">Free • No experience needed</div>
+<section class="hero">
+  <div class="container">
 
-  <h1>
-    <span class="reveal delay1">I Got Paid For</span>
-    <span class="reveal delay2 highlight">This…</span><br>
-    <span class="reveal delay2">Just Answering Questions</span>
-  </h1>
+    <div class="badge fade-item delay-1">
+      Free • No experience needed
+    </div>
 
-  <div class="subtext">
-    I didn’t expect it to work, but after trying it, I actually got paid.
+    <h1>
+      <span class="fade-item delay-2">I Got Paid For</span>
+      <span class="fade-item delay-3 highlight">This…</span><br>
+      <span class="fade-item delay-4">Just Answering Questions</span>
+    </h1>
+
+    <div class="subtext fade-item delay-4">
+      I didn’t expect it to work, but after trying it, I actually got paid.
+    </div>
+
+    <a
+      class="cta-button fade-item delay-5"
+      href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      👉 Try It Free
+    </a>
+
+    <div class="cta-note fade-item delay-5">
+      Takes less than 1 minute to get started
+    </div>
+
   </div>
+</section>
 
-  <a class="cta-button" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
-    👉 Try It Free
-  </a>
+<!-- =======================================================
+     STORY
+======================================================= -->
 
-  <div class="cta-note">
-    Takes less than 1 minute to get started
-  </div>
-
-</div>
-
-<div class="story">
-  I was just scrolling and saw someone mention this, so I gave it a try.  
-  Answered a few questions and ended up earning a few dollars.  
+<div class="story fade">
+  I was just scrolling and saw someone mention this, so I gave it a try.
+  Answered a few questions and ended up earning a few dollars.
   It’s not crazy money, but it actually works.
 </div>
 
-<div class="main">
+<!-- =======================================================
+     MAIN
+======================================================= -->
+
+<main class="main container fade">
 
   <div class="info">
+
     <h2>What you do</h2>
-    <p>Answer simple questions and surveys.</p>
+    <p>
+      Answer simple questions and surveys.
+    </p>
 
     <h2>What you get</h2>
-    <p>Small payments, gift cards, or cash.</p>
+    <p>
+      Small payments, gift cards, or cash.
+    </p>
 
     <h2>Worth trying?</h2>
-    <p>If you’ve got spare time, it’s an easy way to earn a bit extra.</p>
+    <p>
+      If you’ve got spare time, it’s an easy way to earn a bit extra.
+    </p>
 
     <div class="final-cta">
-      <a class="cta-secondary" href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d" target="_blank">
+
+      <a
+        class="cta-secondary"
+        href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         See How It Works
       </a>
+
     </div>
 
   </div>
@@ -303,6 +502,7 @@ h1 {
   <div class="mockup">
 
     <div class="mock-top">
+
       <div class="stat">
         <div class="stat-title">Available</div>
         <div class="stat-value">12 Surveys</div>
@@ -312,20 +512,75 @@ h1 {
         <div class="stat-title">Today</div>
         <div class="stat-value">$4.80</div>
       </div>
+
     </div>
 
-    <div class="survey"><span>Shopping habits</span><span>5 min</span></div>
-    <div class="survey"><span>App feedback</span><span>3 min</span></div>
-    <div class="survey"><span>Daily routine</span><span>4 min</span></div>
-    <div class="survey"><span>Entertainment</span><span>6 min</span></div>
+    <div class="survey">
+      <span>Shopping habits</span>
+      <span>5 min</span>
+    </div>
+
+    <div class="survey">
+      <span>App feedback</span>
+      <span>3 min</span>
+    </div>
+
+    <div class="survey">
+      <span>Daily routine</span>
+      <span>4 min</span>
+    </div>
+
+    <div class="survey">
+      <span>Entertainment</span>
+      <span>6 min</span>
+    </div>
 
   </div>
 
-</div>
+</main>
 
-<div class="trust">
+<!-- =======================================================
+     FOOTER
+======================================================= -->
+
+<footer class="trust fade">
   Free signup • Works worldwide • No payment required
-</div>
+</footer>
+
+<script>
+/* =========================================================
+   SCROLL FADE SYSTEM
+========================================================= */
+
+const faders = document.querySelectorAll('.fade');
+
+const appearOptions = {
+  threshold: 0.15,
+  rootMargin: "0px 0px -40px 0px"
+};
+
+const appearOnScroll = new IntersectionObserver(
+  function(entries, observer) {
+
+    entries.forEach(entry => {
+
+      if (!entry.isIntersecting) {
+        return;
+      }
+
+      entry.target.classList.add('show');
+      observer.unobserve(entry.target);
+
+    });
+
+  },
+  appearOptions
+);
+
+faders.forEach(fader => {
+  appearOnScroll.observe(fader);
+});
+</script>
 
 </body>
 </html>
