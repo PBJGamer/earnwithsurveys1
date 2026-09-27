@@ -39,7 +39,7 @@ a {
 
 
 /* =========================================================
-   SCROLL FADE EFFECT
+   SCROLL FADE
 ========================================================= */
 
 .fade {
@@ -57,48 +57,6 @@ a {
 
 
 /* =========================================================
-   STAGGERED HERO FADE-IN
-========================================================= */
-
-.hero-reveal {
-  opacity: 0;
-  transform: translateY(10px);
-  animation: heroFadeUp 0.6s ease forwards;
-}
-
-.hero-delay-1 {
-  animation-delay: 0.15s;
-}
-
-.hero-delay-2 {
-  animation-delay: 0.4s;
-}
-
-.hero-delay-3 {
-  animation-delay: 0.65s;
-}
-
-.hero-delay-4 {
-  animation-delay: 0.9s;
-}
-
-.hero-delay-5 {
-  animation-delay: 1.15s;
-}
-
-.hero-delay-6 {
-  animation-delay: 1.4s;
-}
-
-@keyframes heroFadeUp {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-
-/* =========================================================
    HERO
 ========================================================= */
 
@@ -106,7 +64,6 @@ a {
   width: 100%;
   max-width: 1100px;
   margin: 0 auto;
-
   text-align: center;
 
   padding:
@@ -116,9 +73,7 @@ a {
 }
 
 
-/* =========================================================
-   BADGE
-========================================================= */
+/* BADGE */
 
 .badge {
   display: inline-block;
@@ -127,22 +82,23 @@ a {
   color: #22c55e;
 
   padding: 7px 15px;
-
   border-radius: 999px;
 
   font-size: clamp(12px, 1.5vw, 13px);
 
   margin-bottom: 20px;
+
+  opacity: 0;
+  animation: heroFade 0.6s ease forwards;
 }
 
 
 /* =========================================================
-   HEADLINE
+   STAGGERED HERO TEXT
 ========================================================= */
 
 h1 {
   font-size: clamp(36px, 5.2vw, 56px);
-
   line-height: 1.08;
 
   margin: 0 auto;
@@ -152,14 +108,33 @@ h1 {
   letter-spacing: -1.5px;
 }
 
+.reveal {
+  display: inline-block;
+
+  opacity: 0;
+  transform: translateY(12px);
+
+  animation: heroFade 0.6s ease forwards;
+}
+
+.reveal.delay1 {
+  animation-delay: 0.2s;
+}
+
+.reveal.delay2 {
+  animation-delay: 0.5s;
+}
+
+.reveal.delay3 {
+  animation-delay: 0.75s;
+}
+
 .highlight {
   color: #34d399;
 }
 
 
-/* =========================================================
-   HERO SUBTEXT
-========================================================= */
+/* HERO SUBTEXT */
 
 .subtext {
   color: #94a3b8;
@@ -171,11 +146,15 @@ h1 {
   margin: 20px auto 30px;
 
   max-width: 570px;
+
+  opacity: 0;
+  animation: heroFade 0.6s ease forwards;
+  animation-delay: 0.9s;
 }
 
 
 /* =========================================================
-   CTA BUTTON
+   MAIN CTA
 ========================================================= */
 
 .cta-button {
@@ -194,7 +173,6 @@ h1 {
   border-radius: 12px;
 
   font-weight: 700;
-
   text-decoration: none;
 
   font-size: 18px;
@@ -206,8 +184,13 @@ h1 {
     transform 0.25s ease,
     box-shadow 0.25s ease;
 
+  opacity: 0;
+
   animation:
-    pulse 2.5s infinite;
+    heroFade 0.6s ease forwards,
+    pulse 2.5s 1.8s infinite;
+
+  animation-delay: 1.2s, 1.8s;
 }
 
 .cta-button:hover {
@@ -222,9 +205,7 @@ h1 {
 }
 
 
-/* =========================================================
-   CTA PULSE
-========================================================= */
+/* CTA PULSE */
 
 @keyframes pulse {
 
@@ -246,9 +227,24 @@ h1 {
 }
 
 
-/* =========================================================
-   CTA NOTE
-========================================================= */
+/* HERO FADE */
+
+@keyframes heroFade {
+
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+}
+
+
+/* CTA NOTE */
 
 .cta-note {
   font-size: 13px;
@@ -256,50 +252,59 @@ h1 {
   color: #64748b;
 
   margin-top: 11px;
+
+  opacity: 0;
+
+  animation:
+    heroFade 0.6s ease forwards;
+
+  animation-delay: 1.4s;
 }
 
 
 /* =========================================================
-   PAYOUT STRIP
+   PAYMENT / REWARD OPTIONS
 ========================================================= */
 
-.payouts {
+.reward-options {
+
   display: flex;
 
   justify-content: center;
+
+  align-items: center;
 
   gap: 10px;
 
   flex-wrap: wrap;
 
-  margin-top: 24px;
+  margin-top: 22px;
+
+  opacity: 0;
+
+  animation:
+    heroFade 0.6s ease forwards;
+
+  animation-delay: 1.6s;
 }
 
-.payout-item {
-  background: rgba(255, 255, 255, 0.05);
+.reward-item {
 
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background:
+    rgba(255,255,255,0.045);
 
-  padding: 8px 14px;
+  border:
+    1px solid rgba(255,255,255,0.07);
+
+  color: #cbd5f5;
+
+  padding: 8px 13px;
 
   border-radius: 999px;
 
-  font-size: 13px;
-
-  color: #cbd5f5;
-}
-
-
-/* =========================================================
-   PAYOUT MICRO NOTE
-========================================================= */
-
-.micro-trust {
   font-size: 12px;
 
-  color: #64748b;
-
-  margin-top: 10px;
+  white-space: nowrap;
 }
 
 
@@ -308,6 +313,7 @@ h1 {
 ========================================================= */
 
 .story {
+
   width: calc(100% - 32px);
 
   max-width: 650px;
@@ -329,6 +335,7 @@ h1 {
 ========================================================= */
 
 .main {
+
   width: 100%;
 
   max-width: 1050px;
@@ -355,25 +362,32 @@ h1 {
 ========================================================= */
 
 .info {
+
   width: 100%;
 
   max-width: 450px;
 }
 
 .info h2 {
-  font-size: clamp(21px, 2.5vw, 24px);
 
-  margin: 0 0 9px;
+  font-size:
+    clamp(21px, 2.5vw, 24px);
+
+  margin:
+    0 0 9px;
 }
 
 .info p {
+
   color: #94a3b8;
 
-  font-size: clamp(15px, 1.8vw, 16px);
+  font-size:
+    clamp(15px, 1.8vw, 16px);
 
   line-height: 1.65;
 
-  margin: 0 0 25px;
+  margin:
+    0 0 25px;
 }
 
 
@@ -382,16 +396,24 @@ h1 {
 ========================================================= */
 
 .steps {
-  margin: 30px 0 30px;
+
+  margin:
+    30px 0 30px;
 }
 
 .steps-title {
+
   font-size: 20px;
 
   margin-bottom: 18px;
+
+  color: #f8fafc;
+
+  font-weight: 600;
 }
 
 .step {
+
   display: grid;
 
   grid-template-columns: 34px 1fr;
@@ -402,6 +424,7 @@ h1 {
 }
 
 .step-number {
+
   width: 32px;
   height: 32px;
 
@@ -412,9 +435,11 @@ h1 {
 
   border-radius: 50%;
 
-  background: rgba(52, 211, 153, 0.12);
+  background:
+    rgba(52, 211, 153, 0.12);
 
-  border: 1px solid rgba(52, 211, 153, 0.25);
+  border:
+    1px solid rgba(52, 211, 153, 0.25);
 
   color: #34d399;
 
@@ -426,6 +451,7 @@ h1 {
 }
 
 .step strong {
+
   color: #f8fafc;
 
   font-size: 15px;
@@ -434,6 +460,7 @@ h1 {
 }
 
 .step span {
+
   color: #94a3b8;
 
   font-size: 14px;
@@ -445,19 +472,22 @@ h1 {
 
 
 /* =========================================================
-   EXPECTATIONS / TRANSPARENCY BOX
+   TRANSPARENCY BOX
 ========================================================= */
 
 .expectations {
+
   display: flex;
 
   flex-direction: column;
 
   gap: 6px;
 
-  background: rgba(255, 255, 255, 0.035);
+  background:
+    rgba(255,255,255,0.035);
 
-  border: 1px solid rgba(255, 255, 255, 0.07);
+  border:
+    1px solid rgba(255,255,255,0.07);
 
   border-radius: 12px;
 
@@ -469,12 +499,14 @@ h1 {
 }
 
 .expectations strong {
+
   color: #e2e8f0;
 
   font-size: 14px;
 }
 
 .expectations span {
+
   color: #94a3b8;
 
   font-size: 13px;
@@ -488,17 +520,21 @@ h1 {
 ========================================================= */
 
 .final-cta {
+
   margin-top: 28px;
 }
 
 .cta-secondary {
+
   display: inline-block;
 
-  border: 2px solid #34d399;
+  border:
+    2px solid #34d399;
 
   color: #34d399;
 
-  padding: 14px 28px;
+  padding:
+    14px 28px;
 
   border-radius: 10px;
 
@@ -515,23 +551,28 @@ h1 {
 }
 
 .cta-secondary:hover {
+
   background: #34d399;
 
   color: black;
 
-  transform: translateY(-2px);
+  transform:
+    translateY(-2px);
 }
 
 .cta-secondary:active {
-  transform: translateY(0);
+
+  transform:
+    translateY(0);
 }
 
 
 /* =========================================================
-   EXAMPLE SURVEY MOCKUP
+   EXAMPLE SURVEY PREVIEW
 ========================================================= */
 
 .mockup {
+
   width: 100%;
 
   max-width: 440px;
@@ -540,86 +581,137 @@ h1 {
 
   border-radius: 18px;
 
-  padding: clamp(17px, 2.5vw, 21px);
+  padding:
+    clamp(18px, 2.5vw, 22px);
 
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  border:
+    1px solid rgba(255,255,255,0.05);
 
   box-shadow:
-    0 15px 45px rgba(0, 0, 0, 0.2);
+    0 15px 45px rgba(0,0,0,0.2);
 }
 
 
-/* =========================================================
-   MOCKUP LABEL
-========================================================= */
+/* MOCKUP TITLE */
+
+.mock-header {
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 15px;
+}
 
 .mock-label {
-  font-size: 13px;
 
-  color: #64748b;
+  font-size: 15px;
 
-  margin-bottom: 12px;
-}
-
-
-/* =========================================================
-   MOCKUP HEADER
-========================================================= */
-
-.mock-top {
-  display: grid;
-
-  grid-template-columns: 1fr 105px;
-
-  gap: 10px;
-
-  margin-bottom: 10px;
-}
-
-.stat {
-  background: #020617;
-
-  padding: 10px 12px;
-
-  border-radius: 8px;
-
-  color: #94a3b8;
-
-  font-size: 12px;
+  color: #f8fafc;
 
   font-weight: 600;
 }
 
+.mock-badge {
 
-/* =========================================================
-   SURVEY ROW
-========================================================= */
+  font-size: 11px;
 
-.survey {
-  background: #020617;
+  color: #34d399;
 
-  padding: 12px;
+  background:
+    rgba(52,211,153,0.08);
 
-  border-radius: 7px;
+  border:
+    1px solid rgba(52,211,153,0.15);
 
-  margin-top: 8px;
+  padding:
+    5px 8px;
+
+  border-radius: 999px;
+}
+
+
+/* COLUMN HEADERS */
+
+.mock-top {
 
   display: grid;
 
-  grid-template-columns: 1fr auto;
+  grid-template-columns:
+    1fr 115px;
+
+  gap: 10px;
+
+  margin-bottom: 8px;
+
+  padding:
+    0 12px;
+}
+
+.stat {
+
+  color: #64748b;
+
+  font-size: 11px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.4px;
+}
+
+
+/* SURVEY ROW */
+
+.survey {
+
+  background: #020617;
+
+  padding:
+    12px;
+
+  border-radius: 8px;
+
+  margin-top: 7px;
+
+  display: grid;
+
+  grid-template-columns:
+    1fr auto;
 
   gap: 12px;
 
   align-items: center;
 
   font-size: 14px;
+
+  border:
+    1px solid rgba(255,255,255,0.025);
+
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.survey:hover {
+
+  transform:
+    translateY(-1px);
+
+  border-color:
+    rgba(52,211,153,0.12);
 }
 
 .survey-name {
+
   color: #e2e8f0;
+
+  font-weight: 500;
 }
 
 .survey-details {
+
   display: flex;
 
   flex-direction: column;
@@ -631,20 +723,27 @@ h1 {
   white-space: nowrap;
 }
 
+.reward {
+
+  color: #34d399;
+
+  font-weight: 600;
+
+  font-size: 13px;
+}
+
 .time {
-  color: #94a3b8;
 
-  font-size: 12px;
+  color: #64748b;
 
-  font-weight: 500;
+  font-size: 11px;
 }
 
 
-/* =========================================================
-   MOCKUP DISCLAIMER
-========================================================= */
+/* MOCKUP DISCLAIMER */
 
 .mock-note {
+
   color: #64748b;
 
   font-size: 11px;
@@ -660,6 +759,7 @@ h1 {
 ========================================================= */
 
 .trust {
+
   width: 100%;
 
   text-align: center;
@@ -674,7 +774,7 @@ h1 {
     65px;
 
   border-top:
-    1px solid rgba(255, 255, 255, 0.03);
+    1px solid rgba(255,255,255,0.03);
 }
 
 
@@ -687,6 +787,7 @@ h1 {
 @media (max-width: 850px) {
 
   .main {
+
     flex-direction: column;
 
     align-items: center;
@@ -694,10 +795,12 @@ h1 {
 
   .info,
   .mockup {
+
     max-width: 600px;
   }
 
   .mockup {
+
     width: 100%;
   }
 
@@ -709,27 +812,32 @@ h1 {
 @media (max-width: 600px) {
 
   .hero {
+
     padding-top: 50px;
 
     padding-bottom: 45px;
   }
 
   h1 {
+
     letter-spacing: -0.8px;
   }
 
   .cta-button,
   .cta-secondary {
+
     width: 100%;
 
     text-align: center;
   }
 
   .story {
+
     margin-bottom: 40px;
   }
 
   .main {
+
     gap: 35px;
 
     padding:
@@ -739,21 +847,27 @@ h1 {
   }
 
   .mock-top {
-    grid-template-columns: 1fr 95px;
+
+    grid-template-columns:
+      1fr 100px;
   }
 
   .survey {
+
     padding: 11px;
   }
 
-  .payouts {
+  .reward-options {
+
     gap: 7px;
   }
 
-  .payout-item {
-    font-size: 12px;
+  .reward-item {
 
-    padding: 7px 11px;
+    font-size: 11px;
+
+    padding:
+      7px 10px;
   }
 
 }
@@ -764,49 +878,59 @@ h1 {
 @media (max-width: 380px) {
 
   .hero {
+
     padding-left: 13px;
 
     padding-right: 13px;
   }
 
   .main {
+
     padding-left: 13px;
 
     padding-right: 13px;
   }
 
+  .mock-top {
+
+    grid-template-columns:
+      1fr 90px;
+  }
+
   .survey {
-    grid-template-columns: 1fr auto;
+
+    grid-template-columns:
+      1fr auto;
 
     gap: 7px;
 
     font-size: 13px;
   }
 
-  .time {
-    font-size: 11px;
+  .reward {
+
+    font-size: 12px;
   }
 
-  .payout-item {
-    font-size: 11px;
+  .time {
 
-    padding: 6px 9px;
+    font-size: 10px;
   }
 
 }
 
 
-/* =========================================================
-   REDUCE MOTION
-========================================================= */
+/* REDUCE MOTION */
 
 @media (prefers-reduced-motion: reduce) {
 
   html {
+
     scroll-behavior: auto;
   }
 
   .fade {
+
     opacity: 1;
 
     transform: none;
@@ -814,7 +938,13 @@ h1 {
     transition: none;
   }
 
-  .hero-reveal {
+  .reveal,
+  .badge,
+  .subtext,
+  .cta-button,
+  .cta-note,
+  .reward-options {
+
     opacity: 1;
 
     transform: none;
@@ -822,12 +952,10 @@ h1 {
     animation: none;
   }
 
-  .cta-button {
-    animation: none;
-  }
-
   .cta-button,
-  .cta-secondary {
+  .cta-secondary,
+  .survey {
+
     transition: none;
   }
 
@@ -844,37 +972,40 @@ h1 {
      HERO
 ===================================================== -->
 
-<section class="hero">
+<section class="hero fade">
 
-  <div class="badge hero-reveal hero-delay-1">
+  <div class="badge">
     Free • No experience needed
   </div>
 
   <h1>
 
-    <span class="hero-reveal hero-delay-2">
+    <span class="reveal delay1">
       I Got Paid For
     </span>
 
-    <span class="hero-reveal hero-delay-3 highlight">
+    <span class="reveal delay2 highlight">
       This…
     </span>
 
     <br>
 
-    <span class="hero-reveal hero-delay-4">
+    <span class="reveal delay3">
       Just Answering Questions
     </span>
 
   </h1>
 
-  <div class="subtext hero-reveal hero-delay-5">
+  <div class="subtext">
+
     I didn’t expect it to work, but after trying it,
     I actually got paid.
+
   </div>
 
+
   <a
-    class="cta-button hero-reveal hero-delay-6"
+    class="cta-button"
     href="https://primeopinion.com.au/register?ref=9b1035f1-7d09-4d5e-954b-849d59dbea6d"
     target="_blank"
     rel="noopener noreferrer"
@@ -882,38 +1013,38 @@ h1 {
     👉 Try It Free
   </a>
 
-  <div class="cta-note hero-reveal hero-delay-6">
+
+  <div class="cta-note">
+
     Takes less than 1 minute to get started
-  </div>
-
-
-  <!-- PAYOUT OPTIONS -->
-
-  <div class="payouts hero-reveal hero-delay-6">
-
-    <div class="payout-item">
-      💸 PayPal
-    </div>
-
-    <div class="payout-item">
-      🏦 Bank Transfer
-    </div>
-
-    <div class="payout-item">
-      🎁 Gift Cards
-    </div>
-
-    <div class="payout-item">
-      💳 Prepaid Cards
-    </div>
 
   </div>
 
-  <div class="micro-trust hero-reveal hero-delay-6">
-    Reward options depend on availability and location
+
+  <!-- REWARD OPTIONS -->
+
+  <div class="reward-options">
+
+    <div class="reward-item">
+      💸 Cash rewards
+    </div>
+
+    <div class="reward-item">
+      🎁 Gift cards
+    </div>
+
+    <div class="reward-item">
+      💳 Multiple reward options
+    </div>
+
+    <div class="reward-item">
+      🌍 Available worldwide
+    </div>
+
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -930,6 +1061,7 @@ h1 {
 </section>
 
 
+
 <!-- =====================================================
      MAIN CONTENT
 ===================================================== -->
@@ -941,12 +1073,18 @@ h1 {
 
   <div class="info">
 
-    <h2>What you do</h2>
+
+    <h2>
+      What you do
+    </h2>
 
     <p>
+
       Answer simple questions about shopping, products,
       entertainment and everyday life.
+
     </p>
+
 
 
     <!-- HOW IT WORKS -->
@@ -1011,6 +1149,7 @@ h1 {
     </div>
 
 
+
     <!-- WHAT YOU GET -->
 
     <h2>
@@ -1018,9 +1157,12 @@ h1 {
     </h2>
 
     <p>
+
       Prime Opinion offers rewards that can include cash
       and gift cards, depending on what’s available.
+
     </p>
+
 
 
     <!-- TRANSPARENCY -->
@@ -1032,11 +1174,14 @@ h1 {
       </strong>
 
       <span>
+
         Survey availability and rewards vary by person.
         Some surveys may not be available to every user.
+
       </span>
 
     </div>
+
 
 
     <!-- SECOND CTA -->
@@ -1057,25 +1202,34 @@ h1 {
   </div>
 
 
+
   <!-- =================================================
-       RIGHT COLUMN / EXAMPLE DASHBOARD
-  ================================================== -->
+       EXAMPLE SURVEY PREVIEW
+  ================================================= -->
 
   <div class="mockup">
 
-    <div class="mock-label">
-      Example surveys
+    <div class="mock-header">
+
+      <div class="mock-label">
+        Example surveys
+      </div>
+
+      <div class="mock-badge">
+        Sample
+      </div>
+
     </div>
 
 
     <div class="mock-top">
 
       <div class="stat">
-        Survey topics
+        Survey
       </div>
 
       <div class="stat">
-        Estimated time
+        Reward / time
       </div>
 
     </div>
@@ -1088,6 +1242,10 @@ h1 {
       </span>
 
       <span class="survey-details">
+
+        <span class="reward">
+          ~$1.20
+        </span>
 
         <span class="time">
           ~5 min
@@ -1106,6 +1264,10 @@ h1 {
 
       <span class="survey-details">
 
+        <span class="reward">
+          ~$0.90
+        </span>
+
         <span class="time">
           ~3 min
         </span>
@@ -1122,6 +1284,10 @@ h1 {
       </span>
 
       <span class="survey-details">
+
+        <span class="reward">
+          ~$1.00
+        </span>
 
         <span class="time">
           ~4 min
@@ -1140,6 +1306,10 @@ h1 {
 
       <span class="survey-details">
 
+        <span class="reward">
+          ~$1.50
+        </span>
+
         <span class="time">
           ~6 min
         </span>
@@ -1150,13 +1320,16 @@ h1 {
 
 
     <div class="mock-note">
+
       Example layout only — actual surveys,
       availability and rewards vary.
+
     </div>
 
   </div>
 
 </section>
+
 
 
 <!-- =====================================================
@@ -1170,39 +1343,45 @@ h1 {
 </div>
 
 
+
 <!-- =====================================================
      SCROLL FADE SCRIPT
 ===================================================== -->
 
 <script>
 
-const faders = document.querySelectorAll('.fade');
+const faders =
+  document.querySelectorAll('.fade');
 
 const appearOptions = {
   threshold: 0.12
 };
 
-const appearOnScroll = new IntersectionObserver(
-  function(entries, observer) {
+const appearOnScroll =
+  new IntersectionObserver(
+    function(entries, observer) {
 
-    entries.forEach(entry => {
+      entries.forEach(entry => {
 
-      if (!entry.isIntersecting) {
-        return;
-      }
+        if (!entry.isIntersecting) {
+          return;
+        }
 
-      entry.target.classList.add('show');
+        entry.target.classList.add('show');
 
-      observer.unobserve(entry.target);
+        observer.unobserve(entry.target);
 
-    });
+      });
 
-  },
-  appearOptions
-);
+    },
+    appearOptions
+  );
+
 
 faders.forEach(fader => {
+
   appearOnScroll.observe(fader);
+
 });
 
 </script>
